@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://doraingame.github.io/sitemap.xml

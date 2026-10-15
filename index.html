@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dorain Lab — แอปเล็กๆ ที่ใช้ได้จริง</title>
+<meta name="description" content="Dorain Lab ทำแอป iPhone และ iPad ที่คิดมาเพื่อคนไทย: สแกนง่าย, รายรับรายจ่าย, หารกัน, SlipJot, ตราเวลา, English Phonics และเกมสำหรับวงเพื่อน">
+<link rel="canonical" href="https://doraingame.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dorain Lab">
+<meta property="og:title" content="Dorain Lab — แอปเล็กๆ ที่ใช้ได้จริง">
+<meta property="og:description" content="Dorain Lab ทำแอป iPhone และ iPad ที่คิดมาเพื่อคนไทย: สแกนง่าย, รายรับรายจ่าย, หารกัน, SlipJot, ตราเวลา, English Phonics และเกมสำหรับวงเพื่อน">
+<meta property="og:url" content="https://doraingame.github.io/">
+<meta name="theme-color" content="#06111f">
+<meta property="og:image" content="https://doraingame.github.io/logo-512.png">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/logo-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: sticky frosted nav over a night-rain hero with three phones, an iOS-style dock bridging into a bright page, two app spotlights, the catalogue, then support */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f9;
+  --ink: #0d1a33;
+  --muted: #5b6782;
+  --line: #e1e6ef;
+  --accent: #2b6ff2;
+  --chip: #eef2fa;
+  --live: #0b8a60;
+  --live-bg: #e1f4ec;
+  --soon: #5b6782;
+  --soon-bg: #eceff5;
+  --price: #7a4f00;
+  --price-bg: #ffefc7;
+  --shadow: 0 1px 2px rgba(13, 26, 51, .05), 0 12px 32px -14px rgba(13, 26, 51, .22);
+  --shadow-lg: 0 2px 4px rgba(13, 26, 51, .05), 0 30px 60px -24px rgba(13, 26, 51, .35);
+
+  --night: #06111f;
+  --night-2: #0b2142;
+  --night-ink: #f2f6ff;
+  --night-muted: #a7b6d3;
+  --glow-a: rgba(64, 214, 200, .28);
+  --glow-b: rgba(43, 111, 242, .38);
+
+  --v1: #e5484d; --v2: #2b6ff2; --v3: #0f9d6e; --v4: #d98a00;
+
+  --f-display: "Chakra Petch", "Noto Sans Thai", system-ui, sans-serif;
+  --f-body: "Chakra Petch", "Noto Sans Thai", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #08101e; --surface: #101a2c; --surface-2: #0d1627; --ink: #e8eefb; --muted: #9aa8c4; --line: #1d2a42;
+    --accent: #6ea4ff; --chip: #16223a; --live: #44d6a0; --live-bg: #10332a; --soon: #a9b5cc; --soon-bg: #19243a;
+    --price: #ffd27a; --price-bg: #3a2b0b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.7);
+    --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 30px 60px -24px rgba(0,0,0,.8);
+    --v1: #ff6b70; --v2: #6ea4ff; --v3: #44d6a0; --v4: #ffbf47;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #08101e; --surface: #101a2c; --surface-2: #0d1627; --ink: #e8eefb; --muted: #9aa8c4; --line: #1d2a42;
+  --accent: #6ea4ff; --chip: #16223a; --live: #44d6a0; --live-bg: #10332a; --soon: #a9b5cc; --soon-bg: #19243a;
+  --price: #ffd27a; --price-bg: #3a2b0b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.7);
+  --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 30px 60px -24px rgba(0,0,0,.8);
+  --v1: #ff6b70; --v2: #6ea4ff; --v3: #44d6a0; --v4: #ffbf47;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-weight: var(--w-body, 400); font-size: 1rem; line-height: 1.7; -webkit-font-smoothing: antialiased; }.wrap { max-width: 72rem; margin: 0 auto; padding-inline: 20px; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; }
+[id] { scroll-margin-top: 80px; }
+
+/* ---------- NAV ---------- */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; transition: background .25s ease, box-shadow .25s ease; }
+.nav.solid { background: rgba(6, 17, 31, .78); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+.nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--night-ink); text-decoration: none; font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; }
+.brand svg { width: 32px; height: 32px; }
+.nav-links { display: flex; gap: 22px; align-items: center; }
+.nav-links a { color: var(--night-muted); text-decoration: none; font-size: .95rem; }
+.nav-links a:hover { color: var(--night-ink); }
+.nav-links .nav-cta { color: #0b1f3d; background: #fff; padding: 6px 14px; border-radius: 10px; font-weight: 600; }
+.nav-links .nav-cta:hover { color: #0b1f3d; }
+
+/* ---------- HERO ---------- */
+.top-band {
+  position: relative; color: var(--night-ink); margin-top: -64px; padding-top: 64px; overflow-x: clip;
+  background:
+    radial-gradient(60% 70% at 85% 15%, var(--glow-a), transparent 70%),
+    radial-gradient(70% 80% at 10% 100%, var(--glow-b), transparent 70%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-2) 100%);
+}
+.rain-box { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+#rain { width: 100%; height: 100%; display: block; }
+.top-band > .wrap { position: relative; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 40px; align-items: center; padding-block: 40px 110px; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); font-size: .85rem; color: var(--night-muted); }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: #44d6a0; box-shadow: 0 0 0 4px rgba(68,214,160,.2); display: block; margin-left: 4px; }
+.top-band h1 { font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.12; margin: 20px 0 18px; letter-spacing: -.01em; }
+.top-band h1 .swap { background: linear-gradient(90deg, #7fe7d9, #8cb6ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.top-band .lede { color: var(--night-muted); font-size: 1.12rem; max-width: 36ch; margin: 0 0 30px; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 14px; font-weight: 600; text-decoration: none; font-size: 1rem; transition: transform .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: #ffffff; color: #0b1f3d; }
+.btn-ghost { background: rgba(255,255,255,.08); color: var(--night-ink); border: 1px solid rgba(255,255,255,.18); }
+.stats { display: flex; gap: 34px; margin-top: 40px; flex-wrap: wrap; }
+.stats div { font-size: .88rem; color: var(--night-muted); }
+.stats b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 1.8rem; color: var(--night-ink); line-height: 1.2; }
+
+/* phones */
+.phones { position: relative; height: 560px; }
+.phone {
+  position: absolute; width: 238px; aspect-ratio: 9 / 19.3; max-width: 100%;
+  border-radius: 40px; padding: 9px; background: #0c0f14;
+  box-shadow: 0 0 0 1.5px #2b313b, 0 40px 60px -20px rgba(0,0,0,.6), inset 0 0 0 1px #000;
+}
+.phone .screen { width: 100%; height: 100%; border-radius: 32px; overflow: hidden; position: relative; font-size: 11px; line-height: 1.4; }
+.phone .island { position: absolute; top: 9px; left: 50%; translate: -50% 0; width: 68px; height: 20px; border-radius: 20px; background: #000; z-index: 3; }
+.p-left  { left: 0;   top: 70px; rotate: -8deg; }
+.p-mid   { left: 50%; top: 0;    translate: -50% 0; z-index: 2; width: 256px; }
+.p-right { right: 0;  top: 70px; rotate: 8deg; }
+@media (prefers-reduced-motion: no-preference) {
+  .phone { animation: float 7s ease-in-out infinite; }
+  .p-left { animation-delay: -2s; } .p-right { animation-delay: -4.5s; }
+  @keyframes float { 50% { transform: translateY(-10px); } }
+}
+
+.s-exp { background: #f4f7f5; color: #0f2a22; }
+.s-exp .head { padding: 36px 16px 14px; background: linear-gradient(160deg, #13b07c, #0a7e5a); color: #fff; border-radius: 0 0 22px 22px; }
+.s-exp .head small { opacity: .8; }
+.s-exp .bal { font-family: var(--f-display); font-size: 26px; font-weight: 600; margin: 2px 0 10px; }
+.s-exp .io { display: flex; gap: 8px; }
+.s-exp .io span { flex: 1; background: rgba(255,255,255,.16); border-radius: 10px; padding: 6px 8px; }
+.s-exp .io b { display: block; font-size: 12px; }
+.s-exp .list { padding: 12px; display: grid; gap: 7px; }
+.s-exp .day { font-size: 10px; color: #6b7c76; padding: 2px 4px; display: flex; justify-content: space-between; }
+.s-exp .row { display: flex; align-items: center; gap: 9px; background: #fff; border-radius: 12px; padding: 8px 10px; }
+.s-exp .row i { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; font-style: normal; font-size: 13px; flex: none; }
+.s-exp .row span { flex: 1; min-width: 0; }
+.s-exp .row b { font-variant-numeric: tabular-nums; }
+.neg { color: #d4483b; } .pos { color: #0b8a60; }
+.s-exp .fab { position: absolute; bottom: 18px; left: 50%; translate: -50% 0; width: 46px; height: 46px; border-radius: 50%; background: #0f9d6e; color: #fff; display: grid; place-items: center; font-size: 26px; box-shadow: 0 8px 16px -4px rgba(15,157,110,.6); }
+
+.s-scan { background: #1b1f27; color: #fff; display: flex; flex-direction: column; }
+.s-scan .top { padding: 30px 16px 8px; display: flex; justify-content: space-between; align-items: center; }
+.s-scan .tag { background: #2f6fdf; padding: 3px 9px; border-radius: 999px; font-size: 10px; }
+.s-scan .view { flex: 1; margin: 6px 14px; border-radius: 16px; background: linear-gradient(160deg, #3a3f48, #23262d); position: relative; display: grid; place-items: center; }
+.s-scan .doc { width: 72%; aspect-ratio: 1 / 1.35; background: #f7f7f5; rotate: -3deg; border-radius: 3px; padding: 14px 12px; display: grid; gap: 5px; align-content: start; box-shadow: 0 10px 20px rgba(0,0,0,.4); }
+.s-scan .doc i { display: block; height: 4px; border-radius: 2px; background: #2a2a2a; opacity: .75; }
+.s-scan .doc i.t { height: 7px; width: 55%; margin: 0 auto 6px; opacity: .9; }
+.s-scan .corner { position: absolute; width: 22px; height: 22px; border: 3px solid #4f8dff; }
+.s-scan .c1 { top: 14%; left: 10%; border-right: 0; border-bottom: 0; border-radius: 6px 0 0 0; }
+.s-scan .c2 { top: 14%; right: 10%; border-left: 0; border-bottom: 0; border-radius: 0 6px 0 0; }
+.s-scan .c3 { bottom: 12%; left: 10%; border-right: 0; border-top: 0; border-radius: 0 0 0 6px; }
+.s-scan .c4 { bottom: 12%; right: 10%; border-left: 0; border-top: 0; border-radius: 0 0 6px 0; }
+.s-scan .modes { display: flex; justify-content: center; gap: 14px; font-size: 10px; color: #aab2c0; padding: 10px 0 4px; }
+.s-scan .modes b { color: #fff; }
+.s-scan .shutter { margin: 6px auto 22px; width: 52px; height: 52px; border-radius: 50%; border: 3px solid #fff; display: grid; place-items: center; }
+.s-scan .shutter::after { content: ""; width: 40px; height: 40px; border-radius: 50%; background: #fff; }
+
+.s-stamp { background: linear-gradient(180deg, rgba(0,0,0,.05) 50%, rgba(0,0,0,.35)), linear-gradient(180deg, #f6a65a 0%, #e4734a 38%, #6b4a7a 62%, #2a2d4f 100%); color: #fff; }
+.s-stamp .sun { position: absolute; width: 70px; height: 70px; border-radius: 50%; background: #ffd27a; left: 26%; top: 40%; box-shadow: 0 0 40px 10px rgba(255,210,122,.5); }
+.s-stamp .hills { position: absolute; left: -10%; right: -10%; bottom: 18%; height: 34%; background: #1d2240; border-radius: 50% 60% 0 0 / 70% 60% 0 0; }
+.s-stamp .hills2 { position: absolute; left: 20%; right: -30%; bottom: 14%; height: 28%; background: #141832; border-radius: 60% 40% 0 0 / 80% 60% 0 0; }
+.s-stamp .ground { position: absolute; left: 0; right: 0; bottom: 0; height: 16%; background: #0d1026; }
+.s-stamp .stamp { position: absolute; top: 38px; right: 12px; text-align: right; font-weight: 600; font-size: 10px; line-height: 1.5; text-shadow: 0 1px 2px rgba(0,0,0,.55); }
+.s-stamp .bar { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 0 18px; display: flex; justify-content: center; }
+.s-stamp .bar span { width: 48px; height: 48px; border-radius: 50%; border: 3px solid #fff; background: rgba(255,255,255,.25); }
+
+/* ---------- DOCK ---------- */
+.dock-wrap { position: relative; z-index: 3; margin-top: -58px; }
+.dock {
+  margin: 0 auto; width: fit-content; max-width: 100%;
+  display: flex; gap: 18px; padding: 14px 20px; border-radius: 30px; overflow-x: auto;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid var(--line); box-shadow: var(--shadow-lg); scrollbar-width: none;
+}
+.dock::-webkit-scrollbar { display: none; }
+.dock a { display: grid; justify-items: center; gap: 6px; text-decoration: none; color: var(--muted); font-size: .72rem; width: 64px; flex: none; text-align: center; line-height: 1.25; }
+.dock a .icon { width: 56px; height: 56px; transition: transform .2s ease; }
+.dock a:hover .icon { transform: translateY(-6px) scale(1.08); }
+.dock a.soon .icon { filter: saturate(.35); opacity: .7; }
+
+/* icons */
+.icon {
+  width: 64px; height: 64px; flex: none; border-radius: 22.5%; display: grid; place-items: center; color: #fff;
+  background: linear-gradient(150deg, var(--c1), var(--c2));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 6px rgba(0,0,0,.12), 0 10px 18px -8px var(--c2);
+  position: relative; overflow: hidden;
+}
+.icon::before { content: ""; position: absolute; inset: 0 0 50% 0; background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0)); }
+.icon svg { width: 54%; height: 54%; position: relative; filter: drop-shadow(0 1px 1px rgba(0,0,0,.18)); }
+.icon.real { background: var(--surface-2); box-shadow: 0 0 0 .5px rgba(0,0,0,.08), 0 10px 18px -8px rgba(13,26,51,.45); }
+.icon.real::before { display: none; }
+.icon.real img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- SECTIONS ---------- */
+section { padding-block: 80px 0; }
+.kicker { font-size: .85rem; font-weight: 600; color: var(--accent); letter-spacing: .04em; }
+.sec-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+h2 { font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin: 6px 0 0; }
+.sec-head p { margin: 6px 0 0; color: var(--muted); max-width: 46ch; }
+
+/* spotlights */
+.spot { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.spot + .spot { margin-top: 88px; }
+.spot.flip .visual { order: 2; }
+.visual { border-radius: 32px; padding: clamp(24px, 4vw, 44px); min-height: 360px; display: grid; place-items: center; position: relative; overflow: hidden; }
+.spot-copy .icon { width: 58px; height: 58px; margin-bottom: 16px; }
+.spot-copy h3 { font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.2rem); line-height: 1.2; margin: 6px 0 12px; }
+.spot-copy > p { color: var(--muted); margin: 0 0 20px; max-width: 42ch; }
+.feats { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 12px; }
+.feats li { display: flex; gap: 12px; align-items: flex-start; }
+.feats li svg { width: 22px; height: 22px; flex: none; margin-top: 2px; color: var(--live); }
+.feats li b { display: block; font-weight: 600; }
+.feats li span { color: var(--muted); font-size: .95rem; }
+
+/* tapmote visual */
+.v-tap { background: linear-gradient(150deg, #1c2a3e, #0b1220); }
+.v-tap::before { content: ""; position: absolute; inset: 0; background: radial-gradient(50% 60% at 70% 20%, rgba(110,164,255,.35), transparent 70%); }
+.mac { position: relative; width: min(100%, 400px); }
+.mac .lid { aspect-ratio: 16 / 10.4; border-radius: 14px 14px 4px 4px; background: #0a0d12; padding: 8px; box-shadow: 0 0 0 1.5px #39414e; }
+.mac .desk { width: 100%; height: 100%; border-radius: 6px; background: linear-gradient(135deg, #5d7cff, #9b6bff 55%, #ff8fa3); position: relative; overflow: hidden; }
+.mac .menubar { height: 8%; background: rgba(255,255,255,.35); }
+.mac .win { position: absolute; left: 12%; top: 18%; width: 56%; height: 58%; background: rgba(255,255,255,.92); border-radius: 6px; box-shadow: 0 8px 18px rgba(0,0,0,.25); padding: 6% 5%; display: grid; gap: 7%; align-content: start; }
+.mac .win::before { content: ""; position: absolute; top: 6px; left: 7px; width: 22px; height: 6px; background: radial-gradient(circle 3px, #ff5f57 98%, transparent) 0 0 / 8px 6px repeat-x; }
+.mac .win i { display: block; height: 6px; border-radius: 3px; background: #c9d2e3; }
+.mac .win2 { left: 52%; top: 40%; width: 38%; height: 44%; background: rgba(20,28,40,.9); }
+.mac .win2 i { background: #3b4a63; }
+.mac .cursor { position: absolute; left: 63%; top: 30%; width: 16px; height: 16px; }
+.mac .base { height: 12px; margin: 0 -6%; background: linear-gradient(#c7ccd4, #8e95a1); border-radius: 0 0 14px 14px; }
+.tap-phone { position: absolute; right: -4%; bottom: -18%; width: 34%; aspect-ratio: 9 / 19; border-radius: 22px; background: #0c0f14; padding: 5px; box-shadow: 0 0 0 1.5px #39414e, 0 24px 40px -12px rgba(0,0,0,.7); rotate: 6deg; }
+.tap-phone .screen { width: 100%; height: 100%; border-radius: 17px; background: #121a28; display: grid; grid-template-rows: 1fr auto; padding: 18px 8px 10px; gap: 8px; }
+.tap-phone .pad { border-radius: 10px; background: #1d2939; display: grid; place-items: center; }
+.tap-phone .pad span { width: 18px; height: 18px; border-radius: 50%; background: rgba(110,164,255,.6); box-shadow: 0 0 0 8px rgba(110,164,255,.18); }
+.tap-phone .keys { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+.tap-phone .keys i { height: 8px; border-radius: 2px; background: #2b3a50; }
+
+/* phonics visual */
+.v-phon { background: linear-gradient(150deg, #fff1f5, #eef4ff); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .v-phon { background: linear-gradient(150deg, #2a1420, #121d36); } }
+:root[data-theme="dark"] .v-phon { background: linear-gradient(150deg, #2a1420, #121d36); }
+.words { display: grid; gap: 14px; width: min(100%, 380px); }
+.word { background: var(--surface); border-radius: 20px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: var(--shadow); }
+.word .w { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.8rem, 5vw, 2.4rem); letter-spacing: .02em; line-height: 1.2; color: var(--ink); }
+.word .w b { font-weight: 700; }
+.word small { color: var(--muted); font-size: .85rem; text-align: right; }
+.word:nth-child(2) { margin-left: 8%; } .word:nth-child(3) { margin-right: 8%; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; font-size: .8rem; color: var(--muted); margin-top: 4px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+
+/* catalogue */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: var(--shadow); display: grid; grid-template-rows: auto 1fr auto; gap: 16px; min-width: 0; transition: transform .2s ease; }
+.card:hover { transform: translateY(-3px); }
+.card-top { display: flex; gap: 16px; align-items: center; min-width: 0; }
+.card-top > div:last-child { min-width: 0; }
+.card h3 { font-weight: 600; font-size: 1.15rem; margin: 0; line-height: 1.3; }
+.card .sub { color: var(--muted); font-size: .88rem; }
+.card p { margin: 0; color: var(--muted); }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--chip); color: var(--muted); white-space: nowrap; }
+.chip.live { background: var(--live-bg); color: var(--live); font-weight: 600; }
+.chip.soon { background: var(--soon-bg); color: var(--soon); }
+.chip.price { background: var(--price-bg); color: var(--price); font-weight: 600; }
+.card-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.store { display: inline-flex; align-items: center; gap: 6px; font-size: .88rem; font-weight: 600; text-decoration: none; padding: 7px 13px; border-radius: 10px; background: var(--ink); color: var(--bg); white-space: nowrap; }
+.store svg { width: 14px; height: 14px; }
+.store.todo { background: transparent; color: var(--muted); border: 1px dashed var(--line); font-weight: 500; }
+
+.soon-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+.soon-card { display: flex; gap: 16px; align-items: center; padding: 20px 22px; border-radius: 24px; border: 1.5px dashed var(--line); background: var(--surface-2); min-width: 0; }
+.soon-card .icon { width: 52px; height: 52px; filter: saturate(.6); }
+.soon-card > div:last-child { min-width: 0; }
+.soon-card h3 { font-weight: 600; font-size: 1.05rem; margin: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.soon-card p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+
+/* promise */
+.promise { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.promise div { padding: 26px; border-radius: 24px; background: var(--surface); box-shadow: var(--shadow); }
+.promise .ico { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; color: #fff; margin-bottom: 16px; background: linear-gradient(150deg, var(--c1), var(--c2)); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 10px 18px -8px var(--c2); }
+.promise .ico svg { width: 24px; height: 24px; }
+.promise h3 { font-weight: 600; font-size: 1.15rem; margin: 0 0 6px; }
+.promise p { margin: 0; color: var(--muted); }
+
+/* support */
+.contact {
+  border-radius: 32px; padding: clamp(24px, 5vw, 52px); color: var(--night-ink); position: relative; overflow: hidden;
+  background: radial-gradient(70% 90% at 100% 0%, var(--glow-a), transparent 70%), linear-gradient(140deg, var(--night-2), var(--night));
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px;
+}
+.contact h2 { color: var(--night-ink); }
+.contact p { color: var(--night-muted); margin: 10px 0 20px; max-width: 44ch; }
+.mail { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.mail code { font-family: ui-monospace, Menlo, monospace; font-size: .98rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); padding: 10px 14px; border-radius: 12px; user-select: all; overflow-wrap: anywhere; color: var(--night-ink); }
+.mail button { font: inherit; font-weight: 600; padding: 10px 16px; border-radius: 12px; border: 0; background: #fff; color: #0b1f3d; cursor: pointer; }
+.privacy { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 22px; min-width: 0; }
+.privacy h3 { margin: 0 0 4px; font-weight: 600; font-size: 1.1rem; color: var(--night-ink); }
+.privacy small { color: var(--night-muted); }
+.privacy ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 2px; }
+.privacy li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.08); font-size: .95rem; }
+.privacy li a { color: #8cb6ff; text-decoration: none; white-space: nowrap; }
+.privacy li em { font-style: normal; color: var(--night-muted); font-size: .82rem; white-space: nowrap; }
+
+footer { margin-top: 64px; border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 28px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
+footer .f-brand { display: flex; align-items: center; gap: 8px; font-family: var(--f-display); font-weight: 600; color: var(--ink); }
+footer .f-brand svg { width: 22px; height: 22px; }
+
+/* ---------- HOME-SCREEN GRID + DETAIL SHEET ---------- */
+.home { background: var(--surface); border-radius: 32px; box-shadow: var(--shadow); padding: clamp(24px, 4vw, 40px) clamp(12px, 3vw, 36px); display: grid; gap: 30px; }
+.folder { display: grid; gap: 12px; }
+.folder + .folder { padding-top: 26px; border-top: 1px solid var(--line); }
+.folder-name { font-family: var(--f-display); font-weight: 600; font-size: 1rem; padding-left: 8px; display: flex; align-items: center; gap: 8px; }
+.folder-name span { font-size: .75rem; font-weight: 500; color: var(--muted); background: var(--chip); padding: 1px 8px; border-radius: 999px; }
+.folder-apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 22px 8px; }
+.privacy ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+.privacy li a { white-space: normal; }
+.app { display: grid; justify-items: center; align-content: start; gap: 8px; background: none; border: 0; font: inherit; color: var(--ink); cursor: pointer; padding: 8px 4px; border-radius: 22px; text-align: center; transition: background .2s ease; }
+.app:hover { background: var(--chip); }
+.app .icon { width: 84px; height: 84px; transition: transform .2s cubic-bezier(.2,.8,.2,1); }
+.app:hover .icon { transform: translateY(-4px) scale(1.06); }
+.app:active .icon { transform: scale(.94); }
+.app .name { font-size: .92rem; font-weight: 500; line-height: 1.3; }
+.app .tag { font-size: .7rem; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); }
+.app .tag.price { background: var(--price-bg); color: var(--price); }
+.app .tag.soon { background: var(--soon-bg); color: var(--soon); font-weight: 500; }
+.app.is-soon .icon { filter: saturate(.4); opacity: .75; }
+
+.sheet-back { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 16px; background: rgba(6, 17, 31, .55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.sheet-back[hidden] { display: none; }
+.sheet { position: relative; width: min(100%, 500px); max-height: calc(100% - 32px); overflow: auto; background: var(--surface); color: var(--ink); border-radius: 28px; box-shadow: var(--shadow-lg); padding: 28px; }
+.sh-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--chip); color: var(--muted); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.sh-head { display: flex; gap: 18px; align-items: center; margin-bottom: 18px; padding-right: 36px; }
+.sh-head .icon { width: 92px; height: 92px; }
+.sh-head h3 { margin: 0; font-weight: 600; font-size: 1.5rem; line-height: 1.25; }
+.sh-head .sub { color: var(--muted); font-size: .95rem; }
+.sh-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.sheet p { color: var(--muted); margin: 0 0 18px; }
+.sh-points { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 10px; }
+.sh-points li { display: flex; gap: 10px; align-items: flex-start; }
+.sh-points svg { width: 20px; height: 20px; flex: none; margin-top: 3px; color: var(--live); }
+.sh-foot { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--line); }
+.sh-foot .store { font-size: 1rem; padding: 10px 18px; border-radius: 12px; }
+.sh-foot .plink { font-size: .9rem; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .sheet-back:not([hidden]) { animation: fadein .22s ease; }
+  .sheet-back:not([hidden]) .sheet { animation: rise .38s cubic-bezier(.2,.8,.2,1); }
+  @keyframes fadein { from { opacity: 0; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(28px) scale(.96); } }
+}
+@media (max-width: 640px) {
+  .home { padding: 22px 8px; gap: 22px; }
+  .folder-apps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 4px; }
+  .app .icon { width: 62px; height: 62px; }
+  .app .name { font-size: .78rem; }
+  .sheet-back { place-items: end center; padding: 0; }
+  .sheet { width: 100%; max-height: 88%; border-radius: 28px 28px 0 0; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ---------- MOTION & INTERACTION ---------- */
+.phones { transform: perspective(1400px) rotateX(calc(var(--rx, 0) * 1deg)) rotateY(calc(var(--ry, 0) * 1deg)); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.swap { display: inline-block; transition: opacity .35s ease, transform .35s ease; }
+.swap.out { opacity: 0; transform: translateY(.3em); }
+.card { position: relative; overflow: hidden; }
+.card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .25s ease;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%); }
+.card:hover::after { opacity: 1; }
+.dock a .icon { transform-origin: 50% 100%; transition: transform .16s ease-out; }
+@media (min-width: 641px) { .dock { overflow: visible; } }
+.s-scan .view::after { content: ""; position: absolute; left: 10%; right: 10%; top: 14%; height: 2px; border-radius: 2px; background: #4f8dff; box-shadow: 0 0 12px 3px rgba(79,141,255,.7); }
+.tap-phone .pad { position: relative; }
+.tap-phone .pad span { position: absolute; left: 50%; top: 30%; translate: -50% -50%; }
+.word { border: 0; font: inherit; cursor: pointer; text-align: left; transition: transform .15s ease, box-shadow .15s ease; }
+.word:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.word.say .w b { display: inline-block; animation: vowel .6s ease; }
+@keyframes vowel { 40% { transform: translateY(-.18em) scale(1.25); } }
+@media (prefers-reduced-motion: no-preference) {
+  .s-scan .view::after { animation: scanline 2.4s ease-in-out infinite alternate; }
+  @keyframes scanline { to { top: 86%; } }
+  .mac .cursor, .tap-phone .pad span { animation: glide 6s ease-in-out infinite; }
+  @keyframes glide { 0%, 100% { left: 50%; top: 30%; } 25% { left: 24%; top: 56%; } 50% { left: 72%; top: 70%; } 75% { left: 40%; top: 22%; } }
+}
+
+@media (max-width: 960px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spot { grid-template-columns: 1fr; gap: 32px; }
+  .spot.flip .visual { order: 0; }
+}
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; padding-block: 24px 100px; }
+  .phones { height: 470px; max-width: 520px; width: 100%; margin: 0 auto; }
+  .phone { width: 196px; } .p-mid { width: 214px; }
+  .promise, .contact { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .grid, .soon-row { grid-template-columns: 1fr; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .dock { gap: 12px; padding: 12px 14px; border-radius: 24px; }
+  .dock a { width: 54px; } .dock a .icon { width: 48px; height: 48px; }
+  .visual { min-height: 280px; }
+}
+@media (max-width: 480px) {
+  .phones { height: 400px; }
+  .phone { width: 150px; border-radius: 30px; padding: 7px; } .phone .screen { border-radius: 24px; font-size: 9px; }
+  .p-mid { width: 176px; }
+  .p-left { left: -6px; top: 60px; } .p-right { right: -6px; top: 60px; }
+  .s-exp .bal { font-size: 20px; }
+}
+
+/* ---------- site additions ---------- */
+.plink.strong { color: var(--accent); font-weight: 600; text-decoration: none; }
+.spot-cta { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.spot-cta .store { font-size: 1rem; padding: 11px 18px; border-radius: 12px; }
+.sh-foot { justify-content: flex-start; gap: 10px 18px; }
+.sh-shots { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -28px 18px; padding: 0 28px 6px; }
+.sh-shots img { flex: none; width: 150px; height: auto; aspect-ratio: 420 / 912; border-radius: 16px; border: 1px solid var(--line); scroll-snap-align: start; background: var(--chip); }
+.v-split { background: linear-gradient(150deg, #e9f8f3, #eef3ff); gap: 0; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .v-split { background: linear-gradient(150deg, #0f2a24, #121d36); } }
+:root[data-theme="dark"] .v-split { background: linear-gradient(150deg, #0f2a24, #121d36); }
+.bill { width: min(100%, 330px); margin-right: 84px; background: var(--surface); border-radius: 22px; box-shadow: var(--shadow-lg); padding: 20px; position: relative; z-index: 1; }
+.bill-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.bill-top b { font-family: var(--f-display); font-size: 1.05rem; }
+.bill-top small { color: var(--muted); }
+.bill-total { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; margin: 10px 0 6px; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); }
+.bill-total span { color: var(--muted); }
+.bill-total b { font-family: var(--f-display); font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.bill-people { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.bill-people li { display: flex; align-items: center; gap: 10px; }
+.bill-people i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-style: normal; font-weight: 600; font-size: .85rem; flex: none; }
+.bill-people span { flex: 1; }
+.bill-people b { font-variant-numeric: tabular-nums; }
+.bill-people em { font-style: normal; font-size: .72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); }
+.bill-people em.paid { background: var(--live-bg); color: var(--live); }
+.qr-card { position: absolute; right: 5%; bottom: 7%; width: 132px; background: #fff; color: #0d1a33; border-radius: 16px; padding: 12px; box-shadow: var(--shadow-lg); display: grid; gap: 4px; justify-items: center; rotate: 6deg; z-index: 2; }
+.qr-card small { color: #5b6782; font-size: .72rem; }
+.qr-card b { font-size: .8rem; color: #0b3d91; }
+.qr { width: 96px; height: 96px; background:
+  conic-gradient(from 90deg at 25% 25%, #0d1a33 0 25%, transparent 0) 0 0 / 24px 24px,
+  repeating-linear-gradient(90deg, #0d1a33 0 6px, transparent 6px 12px),
+  repeating-linear-gradient(0deg, #0d1a33 0 6px, transparent 6px 12px);
+  background-blend-mode: normal; border-radius: 4px; position: relative; }
+.qr::before, .qr::after { content: ""; position: absolute; width: 26px; height: 26px; border: 5px solid #0d1a33; background: #fff; box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 9px #0d1a33; }
+.qr::before { left: 0; top: 0; } .qr::after { right: 0; top: 0; }
+@media (max-width: 640px) { .bill { margin-right: 0; } .qr-card { display: none; } }
+</style>
+</head>
+<body>
+
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fe7d9"/><stop offset="1" stop-color="#3d7cff"/></linearGradient></defs>
+        <rect width="64" height="64" rx="14.4" fill="url(#dg)"/>
+        <path d="M22 11l-5 13M36 9l-7 18M48 13l-4 10M27 32l-4 10" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity=".9"/>
+        <path d="M43 31c0 0-7.5 9-7.5 13.5a7.5 7.5 0 0 0 15 0C50.5 40 43 31 43 31z" fill="#fff"/>
+      </svg>
+      Dorain Lab
+    </a>
+    <nav class="nav-links" aria-label="เมนูหลัก">
+      <a href="#featured">แอปแนะนำ</a>
+      <a href="#apps">แอปทั้งหมด</a>
+      <a href="#privacy">ความเป็นส่วนตัว</a>
+      <a class="nav-cta" href="#support">ติดต่อ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="top-band" id="top">
+  <div class="rain-box" aria-hidden="true"><canvas id="rain"></canvas></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill"><i></i>สตูดิโอทำแอปอิสระจากประเทศไทย</span>
+        <h1>แอปเล็กๆ<br>ที่ทำให้วันของคุณ<br><span class="swap" id="swap">ง่ายขึ้น</span></h1>
+        <p class="lede">Dorain Lab ทำแอปสำหรับ iPhone และ iPad ที่คิดมาเพื่อคนไทย เปิดมาแล้วใช้เป็นทันที ไม่ต้องสมัคร ไม่ต้องอ่านคู่มือ</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#apps">ดูแอปทั้งหมด</a>
+          <a class="btn btn-ghost" href="#support">ติดต่อเรา</a>
+        </div>
+        <div class="stats">
+          <div><b id="live-count">16</b>แอปบน App Store</div>
+          <div><b>14</b>แอปโหลดฟรี</div>
+          <div><b>TH</b>คิดมาเพื่อคนไทย</div>
+        </div>
+      </div>
+
+      <div class="phones" aria-label="ตัวอย่างหน้าจอแอป">
+        <div class="phone p-left" aria-label="สแกนง่าย">
+          <div class="screen s-scan">
+            <div class="island"></div>
+            <div class="top"><b>สแกนง่าย</b><span class="tag">PDF</span></div>
+            <div class="view">
+              <div class="doc"><i class="t"></i><i></i><i></i><i style="width:80%"></i><i></i><i style="width:60%"></i><i></i><i style="width:70%"></i></div>
+              <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+            </div>
+            <div class="modes"><span>สี</span><b>ขาวดำ</b><span>สำเนา</span></div>
+            <div class="shutter"></div>
+          </div>
+        </div>
+        <div class="phone p-mid" aria-label="รายรับรายจ่าย จดง่าย">
+          <div class="screen s-exp">
+            <div class="island"></div>
+            <div class="head">
+              <small>คงเหลือเดือน ต.ค. 2569</small>
+              <div class="bal">฿12,450</div>
+              <div class="io"><span><small>รายรับ</small><b>฿25,000</b></span><span><small>รายจ่าย</small><b>฿12,550</b></span></div>
+            </div>
+            <div class="list">
+              <div class="day"><span>วันนี้</span><span>−฿410</span></div>
+              <div class="row"><i style="background:#ffe6d6">🍜</i><span>ก๋วยเตี๋ยว</span><b class="neg">−60</b></div>
+              <div class="row"><i style="background:#e2ecff">⛽</i><span>เติมน้ำมัน</span><b class="neg">−300</b></div>
+              <div class="row"><i style="background:#fff1c9">☕</i><span>กาแฟ</span><b class="neg">−50</b></div>
+              <div class="day"><span>เมื่อวาน</span><span>+฿24,880</span></div>
+              <div class="row"><i style="background:#dbf5ea">💰</i><span>เงินเดือน</span><b class="pos">+25,000</b></div>
+              <div class="row"><i style="background:#f2e3ff">🛒</i><span>ของใช้</span><b class="neg">−120</b></div>
+            </div>
+            <div class="fab">+</div>
+          </div>
+        </div>
+        <div class="phone p-right" aria-label="ตราเวลา">
+          <div class="screen s-stamp">
+            <div class="island"></div>
+            <div class="sun"></div><div class="hills"></div><div class="hills2"></div><div class="ground"></div>
+            <div class="stamp"><span id="stamp-time">11/10/2569 18:31:00</span><br>จ.เชียงใหม่<br>อ.เมือง 50000<br>ประเทศไทย</div>
+            <div class="bar"><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dock-wrap">
+  <div class="wrap">
+    <nav class="dock" id="dock" aria-label="ไปที่แอป"></nav>
+  </div>
+</div>
+
+<main>
+  <section id="featured">
+    <div class="wrap">
+      <div class="spot">
+        <div class="visual v-split" aria-hidden="true">
+          <div class="bill">
+            <div class="bill-top"><b>ร้านส้มตำป้าแดง</b><small>หารเท่ากัน · 4 คน</small></div>
+            <div class="bill-total"><span>ยอดรวม</span><b>฿1,240</b></div>
+            <ul class="bill-people"><li><i style="background:#ff8a65">ต</i><span>ต้น</span><b>฿310</b><em class="paid">จ่ายแล้ว</em></li><li><i style="background:#7e8cff">แ</i><span>แป้ง</span><b>฿310</b><em>QR</em></li><li><i style="background:#44c49a">บ</i><span>บอส</span><b>฿310</b><em>QR</em></li><li><i style="background:#f4b740">ม</i><span>มิว</span><b>฿310</b><em>QR</em></li></ul>
+          </div>
+          <div class="qr-card"><div class="qr"></div><small>แป้ง · ฿310</small><b>พร้อมเพย์</b></div>
+        </div>
+        <div class="spot-copy">
+          <div class="icon real"><img src="icons/split.png" alt="" width="128" height="128"></div>
+          <div class="kicker">แอปแนะนำ · ฟรี · ใหม่</div>
+          <h3>จ่ายทั้งโต๊ะไปแล้ว เก็บเงินเพื่อนได้ในไม่กี่แตะ</h3>
+          <p>หารกันคิดส่วนของแต่ละคนละเอียดถึงสตางค์ แล้วสร้าง QR พร้อมเพย์ที่ใส่ยอดของเพื่อนแต่ละคนไว้ให้ เพื่อนสแกนจ่ายด้วยแอปธนาคารได้ทันที</p>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><div><b>หารเท่ากัน หรือหารตามที่สั่ง</b><span>เมนูที่แชร์กันก็แบ่งเฉพาะคนที่กินได้</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><div><b>สแกนใบเสร็จได้</b><span>อ่านชื่อเมนูและราคาภาษาไทย อ่านในเครื่อง รูปไม่ถูกส่งไปไหน</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><div><b>คิดเซอร์วิสชาร์จและ VAT ให้</b><span>เฉลี่ยตามสัดส่วนที่แต่ละคนสั่ง</span></div></li>
+          </ul>
+          <div class="spot-cta">
+            <a class="store" href="https://apps.apple.com/th/app/id6822262994" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2-1.1 2.8-2.3.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>ดาวน์โหลดใน App Store</a>
+            <a class="plink strong" href="apps/harnkan/">ดูรายละเอียด →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot flip">
+        <div class="visual v-phon">
+          <div class="words">
+            <button type="button" class="word" id="say-cat" data-say="cat" aria-label="ฟังเสียงคำว่า cat"><span class="w">c<b style="color:var(--v1)">a</b>t</span><small>แมว</small></button>
+            <button type="button" class="word" id="say-cake" data-say="cake" aria-label="ฟังเสียงคำว่า cake"><span class="w">c<b style="color:var(--v2)">a</b>k<b style="color:var(--v2)">e</b></span><small>เค้ก</small></button>
+            <button type="button" class="word" id="say-car" data-say="car" aria-label="ฟังเสียงคำว่า car"><span class="w">c<b style="color:var(--v3)">a</b>r</span><small>รถยนต์</small></button>
+            <div class="legend">
+              <span><i style="background:var(--v1)"></i>แอ</span>
+              <span><i style="background:var(--v2)"></i>เอ</span>
+              <span><i style="background:var(--v3)"></i>อา</span>
+              <span>· แตะคำเพื่อฟังเสียง</span>
+            </div>
+          </div>
+        </div>
+        <div class="spot-copy">
+          <div class="icon real"><img src="icons/phonics.png" alt="" width="128" height="128"></div>
+          <div class="kicker">แอปแนะนำ · การศึกษา</div>
+          <h3>อ่านภาษาอังกฤษออก ด้วยสีแทนตัวเลข</h3>
+          <p>English Phonics อ่านด้วยสี ใช้สีบอกเสียงสระแทนรหัสตัวเลขแบบในหนังสือเรียน เด็กเห็นสีแล้วรู้ทันทีว่าต้องออกเสียงอะไร</p>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><div><b>เนื้อหา ป.2 และ ป.6</b><span>สลับระดับชั้นได้ในแอป</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><div><b>ไล่ความยากทีละขั้น</b><span>เริ่มจากคำง่าย แล้วค่อยๆ ยากขึ้นตามด่าน</span></div></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><div><b>ทำร่วมกับครูประถม</b><span>ออกแบบจากปัญหาที่เจอในห้องเรียนจริง</span></div></li>
+          </ul>
+          <span class="spot-cta"><a class="store" href="https://apps.apple.com/th/app/id6814832117" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2-1.1 2.8-2.3.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>ดาวน์โหลดใน App Store</a> <a class="plink strong" href="apps/english-phonics/">ดูรายละเอียด →</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">แอปของเรา</div>
+          <h2>ทุกแอปจาก Dorain Lab</h2>
+          <p>ทำทีละตัว ใช้เองทุกวัน แล้วค่อยปล่อยให้คนอื่นได้ใช้ แตะไอคอนเพื่อดูรายละเอียด</p>
+        </div>
+      </div>
+      <div class="home" id="grid"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><div class="kicker">สิ่งที่เรายึดไว้</div><h2>ทำแอปแบบที่อยากใช้เอง</h2></div></div>
+      <div class="promise">
+        <div>
+          <span class="ico" style="--c1:#5b9bff;--c2:#2257d6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></span>
+          <h3>ใช้ง่ายก่อนเสมอ</h3>
+          <p>ทุกแอปเริ่มจากคำถามเดียว คือคนที่ไม่ถนัดเทคโนโลยีเปิดมาแล้วใช้ได้เลยไหม</p>
+        </div>
+        <div>
+          <span class="ico" style="--c1:#ffa25c;--c2:#e2552a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <h3>คิดมาเพื่อคนไทย</h3>
+          <p>รองรับพร้อมเพย์ จังหวัด อำเภอ ปี พ.ศ. และเอกสารแบบที่คนไทยใช้จริง</p>
+        </div>
+        <div>
+          <span class="ico" style="--c1:#2fd39a;--c2:#0a8a5f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M7 15h3"/></svg></span>
+          <h3>ราคาตรงไปตรงมา</h3>
+          <p>ฟรี หรือจ่ายครั้งเดียวแล้วใช้ได้ตลอด ไม่มีค่าใช้จ่ายแอบแฝง</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <div class="kicker" style="color:#7fe7d9">ช่วยเหลือ</div>
+          <h2>เจอปัญหา หรืออยากได้ฟีเจอร์?</h2>
+          <p>ส่งอีเมลมาได้เลย บอกชื่อแอปและรุ่น iPhone หรือ iPad ที่ใช้ จะช่วยให้แก้ได้เร็วขึ้น ทุกข้อความมีคนอ่านจริง</p>
+          <div class="mail">
+            <code id="mail">doraingame@gmail.com</code>
+            <button type="button" id="copy-mail">คัดลอก</button>
+          </div>
+        </div>
+        <div class="privacy" id="privacy">
+          <h3>นโยบายความเป็นส่วนตัว</h3>
+          <small>แต่ละแอปใช้ข้อมูลต่างกัน จึงมีนโยบายแยกของตัวเอง</small>
+          <ul id="privacy-list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="sheet-back" id="sheet" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title">
+    <button type="button" class="sh-close" id="sh-close" aria-label="ปิด">×</button>
+    <div class="sh-head">
+      <div id="sh-icon"></div>
+      <div>
+        <h3 id="sh-title">ชื่อแอป</h3>
+        <div class="sub" id="sh-sub"></div>
+        <div class="sh-meta" id="sh-meta"></div>
+      </div>
+    </div>
+    <p id="sh-desc"></p>
+    <ul class="sh-points" id="sh-points"></ul>
+    <div class="sh-shots" id="sh-shots"></div>
+    <div class="sh-foot" id="sh-foot"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="f-brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14.4" fill="url(#dg)"/>
+        <path d="M22 11l-5 13M36 9l-7 18M48 13l-4 10M27 32l-4 10" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity=".9"/>
+        <path d="M43 31c0 0-7.5 9-7.5 13.5a7.5 7.5 0 0 0 15 0C50.5 40 43 31 43 31z" fill="#fff"/>
+      </svg>
+      Dorain Lab
+    </span>
+    <span>© 2026 Dorain Lab · ทำในประเทศไทย · doraingame@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var I = {
+    scan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M4 12h16"/></svg>',
+    money: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h4.5a2.5 2.5 0 0 1 0 5H9h5a2.5 2.5 0 0 1 0 5H9zM9 7v10M11 5v2M11 17v2"/></svg>',
+    stamp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>',
+    focus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="8" height="15" rx="2"/><path d="M4 21h16"/><path d="M4 7l2 2-2 2"/></svg>',
+    remote: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="10" rx="1.5"/><path d="M1.5 18h15"/><rect x="17" y="9" width="5.5" height="11" rx="1.2"/></svg>',
+    phonics: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19 8.5 5l5 14M5.5 14h6"/><circle cx="18" cy="15" r="3"/><path d="M21 12v7"/></svg>',
+    type: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg>',
+    split: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5V12l6 6"/></svg>'
+  };
+  var appleSvg = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2-1.1 2.8-2.3.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>';
+
+  var SLUG = {"scan": "scanngai", "money": "simple-expenses", "stamp": "timestamp", "focus": "focusflip", "remote": "tapmote", "phonics": "english-phonics", "nuhat": "nuhatkhian", "yamae": "yamae", "split": "harnkan", "slipjot": "slipjot", "jamthoe": "jamthoe", "songkon": "songkon", "yingkhong": "yingkhong", "croc": "crocodile-3d", "spy": "spy-game", "dice": "dice", "lunlek": "lunlek", "type": "pimngai"};
+  var SHOTS = {"scan": ["shots/scan-1.jpg", "shots/scan-2.jpg", "shots/scan-3.jpg", "shots/scan-4.jpg"], "money": ["shots/money-1.jpg", "shots/money-2.jpg", "shots/money-3.jpg", "shots/money-4.jpg"], "stamp": ["shots/stamp-1.jpg", "shots/stamp-2.jpg", "shots/stamp-3.jpg", "shots/stamp-4.jpg"], "focus": ["shots/focus-1.jpg", "shots/focus-2.jpg", "shots/focus-3.jpg", "shots/focus-4.jpg"], "phonics": ["shots/phonics-1.jpg", "shots/phonics-2.jpg", "shots/phonics-3.jpg", "shots/phonics-4.jpg"], "nuhat": ["shots/nuhat-1.jpg", "shots/nuhat-2.jpg", "shots/nuhat-3.jpg", "shots/nuhat-4.jpg"], "yamae": ["shots/yamae-1.jpg", "shots/yamae-2.jpg", "shots/yamae-3.jpg", "shots/yamae-4.jpg"], "split": ["shots/split-1.jpg", "shots/split-2.jpg", "shots/split-3.jpg", "shots/split-4.jpg"], "slipjot": ["shots/slipjot-1.jpg", "shots/slipjot-2.jpg", "shots/slipjot-3.jpg", "shots/slipjot-4.jpg"], "jamthoe": ["shots/jamthoe-1.jpg", "shots/jamthoe-2.jpg", "shots/jamthoe-3.jpg", "shots/jamthoe-4.jpg"], "songkon": ["shots/songkon-1.jpg", "shots/songkon-2.jpg", "shots/songkon-3.jpg", "shots/songkon-4.jpg"], "yingkhong": ["shots/yingkhong-1.jpg", "shots/yingkhong-2.jpg", "shots/yingkhong-3.jpg", "shots/yingkhong-4.jpg"], "croc": ["shots/croc-1.jpg", "shots/croc-2.jpg", "shots/croc-3.jpg", "shots/croc-4.jpg"], "spy": ["shots/spy-1.jpg", "shots/spy-2.jpg", "shots/spy-3.jpg", "shots/spy-4.jpg"], "dice": ["shots/dice-1.jpg", "shots/dice-2.jpg", "shots/dice-3.jpg", "shots/dice-4.jpg"], "lunlek": ["shots/lunlek-1.jpg", "shots/lunlek-2.jpg", "shots/lunlek-3.jpg", "shots/lunlek-4.jpg"]};
+  var AS = "https://apps.apple.com/th/app/id", PV = "https://doraingame.github.io/";
+  var GROUPS = [
+    { id: "tool", name: "เครื่องมือ" },
+    { id: "life", name: "การเงิน & ชีวิตประจำวัน" },
+    { id: "learn", name: "การเรียนรู้" },
+    { id: "love", name: "คู่รัก" },
+    { id: "game", name: "เกม" }
+  ];
+  var apps = [
+    { id: "scan", g: "tool", dock: 1, th: "ScanNgai: Scan, Sign & Send", short: "สแกนง่าย", sub: "สแกนเอกสาร เซ็น แล้วส่ง", icon: "scan", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "สแกนบัตรประชาชน ทะเบียนบ้าน ใบเสร็จ หรือใบสมัคร แล้วส่งต่อได้ในไม่กี่แตะ ตัดขอบและปรับภาพตรงให้อัตโนมัติ",
+      store: AS + "6816682748", privacy: PV + "scaneasy-privacy/" },
+    { id: "money", g: "life", dock: 1, th: "Simple Expenses: Daily Log", short: "รายรับรายจ่าย", sub: "จดรายรับรายจ่ายรายวัน", icon: "money", status: "live", price: "฿49", platforms: "iPhone · iPad",
+      desc: "เปิดแอปมาเจอแป้นตัวเลขเลย พิมพ์ยอด แตะหมวด แล้วบันทึก ไม่ต้องสมัคร ข้อมูลไม่ถูกส่งไปไหน และสำรองเข้า iCloud Drive ของคุณเองได้",
+      store: AS + "6805545646", privacy: PV + "simpleexpenses-privacy/" },
+    { id: "stamp", g: "tool", dock: 1, th: "TimeStamp: GPS Date Camera", short: "ตราเวลา", sub: "กล้องประทับวันเวลาและสถานที่", icon: "stamp", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ถ่ายรูปแล้ววันเวลาและที่อยู่ถูกประทับลงในภาพจริง ไม่ใช่แค่ข้อมูลแฝงที่ลบได้ เหมาะกับงานตรวจหน้างาน ซ่อมบำรุง และรายงาน ฟรีทุกฟีเจอร์ ไม่มีโฆษณา",
+      store: AS + "6788965210", privacy: PV + "scaneasy-privacy/timestamp/" },
+    { id: "focus", g: "tool", dock: 1, th: "FocusFlip: Flip to Focus", short: "FocusFlip", sub: "คว่ำจอ แล้วโฟกัส", icon: "focus", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ตัวจับเวลาโฟกัสที่ไม่มีปุ่มให้กด แค่คว่ำมือถือลงบนโต๊ะ เวลาก็เริ่มนับ หยิบขึ้นมาเมื่อไร แอปหยุดเวลาแล้วแซวคุณทันที",
+      store: AS + "6787160692", privacy: "https://meowitth.com/focusflip-privacy" },
+    { id: "remote", g: "tool", dock: 1, th: "Tapmote", short: "Tapmote", sub: "คุม Mac จาก iPhone และ iPad", icon: "remote", status: "web", price: "ฟรี", platforms: "iPhone · iPad · Mac",
+      desc: "ใช้ iPhone หรือ iPad ควบคุม Mac ได้ทั้งเครื่องเหมือนนั่งอยู่หน้าจอ จำอุปกรณ์ที่ไว้ใจได้ และสลับคุม Mac หลายเครื่องได้",
+      web: PV + "tapmote/", privacy: PV + "tapmote/privacy.html" },
+    { id: "phonics", g: "learn", dock: 1, th: "English Phonics อ่านด้วยสี", short: "Phonics", sub: "ฝึกอ่านภาษาอังกฤษด้วยสี", icon: "phonics", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "เปลี่ยนรหัสตัวเลขบนสระในหนังสือเรียนให้เป็นสี เด็กเห็น cat เป็นสีแดงก็รู้ว่าอ่าน \"แ\" เห็น cake เป็นสีน้ำเงินก็รู้ว่าอ่าน \"เ\" ไม่ต้องแปลงตัวเลขในหัวอีกชั้น",
+      store: AS + "6814832117", privacy: PV + "englishphonics-privacy/" },
+    { id: "nuhat", g: "learn", th: "NuHatKhian: Thai ABC Tracing", short: "หนูหัดเขียน", sub: "หัดเขียน ก-ฮ ABC สำหรับเด็ก 3–6 ขวบ", icon: "nuhat", status: "live", price: "฿39", platforms: "iPhone · iPad",
+      desc: "ให้เด็กลากนิ้วตามเส้นประ ฝึกเขียนพยัญชนะไทย 44 ตัว ตัวอักษรอังกฤษ ตัวเลข และชื่อตัวเอง ได้ยินเสียงอ่านทุกตัว และเก็บดาวเป็นรางวัล",
+      store: AS + "6820946004", privacy: PV + "scaneasy-privacy/nuhatkhian/" },
+    { id: "yamae", g: "life", th: "อย่าลืมกินยา", short: "กินยา", sub: "เตือนกินยาให้ตรงเวลา", icon: "yamae", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "แอปเตือนกินยาที่ใช้ง่ายที่สุด เหมาะกับทุกวัย โดยเฉพาะผู้สูงอายุ ตั้งเวลาครั้งเดียว แล้วแอปคอยเตือนให้ทุกวัน",
+      store: AS + "6786351862", privacy: PV + "yamae-privacy/" },
+    { id: "jamthoe", g: "love", th: "จำเธอ - จำทุกเรื่องของแฟน", short: "จำเธอ", sub: "สมุดลับของผู้ชายที่ใส่ใจ", icon: "jamthoe", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "จดทุกเรื่องของแฟน ตั้งแต่เมนูโปรด ไซซ์รองเท้า ไปจนถึงวันครบรอบ แล้วให้แอปช่วยจำและเตือนแทนคุณ",
+      store: AS + "6818954443", privacy: PV + "scaneasy-privacy/jamthoe/" },
+    { id: "songkon", g: "love", th: "SongKon: Couple Diary & Chat", short: "สองคน", sub: "พื้นที่ส่วนตัวของคู่รัก", icon: "songkon", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ทุกอย่างในแอปเห็นกันแค่คุณกับแฟน นับวันที่คบกัน โพสต์ แชท และเขียนจดหมายลับที่เปิดอ่านได้ตามวันที่กำหนด",
+      store: AS + "6817820112", privacy: PV + "scaneasy-privacy/songkon/" },
+    { id: "yingkhong", g: "game", dock: 1, th: "ยิงโค้ง: ฟุตบอลล่าแชมป์", short: "ยิงโค้ง", sub: "เกมฟุตบอล วาดลูกยิงด้วยนิ้ว", icon: "yingkhong", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ลากนิ้วเป็นเส้นโค้ง ลูกเลียดอ้อมกำแพงเข้าซอกมุมบน ฟิสิกส์ลูกบอลสมจริงทั้งการหมุน ลม และแรงต้านอากาศ พาทีมลงแข่งไล่ล่าแชมป์ทีละถ้วย",
+      store: AS + "6820932033", privacy: PV + "scaneasy-privacy/yingkhong/" },
+    { id: "croc", g: "game", th: "ปากจระเข้ 3D: ลุ้นโดนงับ", short: "ปากจระเข้", sub: "เกมลุ้นระทึกสำหรับวงเพื่อน", icon: "croc", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ผลัดกันแตะฟันจระเข้ทีละซี่ ในฟัน 12 ซี่มีซี่เดียวที่เป็นกับดัก ใครกดโดน จระเข้งับฉับทันที เหมาะกับวงเพื่อนและครอบครัว",
+      store: AS + "6818685814", privacy: PV + "scaneasy-privacy/crocdentist/" },
+    { id: "spy", g: "game", th: "Spy Game: Find the Spy", short: "หาสายลับ", sub: "เกมหาสายลับ เล่นด้วยมือถือเครื่องเดียว", icon: "spy", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ทุกคนได้คำลับเดียวกัน ยกเว้นสายลับ ส่งมือถือเครื่องเดียวเวียนกันดูคำ แล้วผลัดกันให้คำใบ้เพื่อจับตัวสายลับ คำทั้งหมดเป็นภาษาไทย",
+      store: AS + "6818948745", privacy: PV + "scaneasy-privacy/spygame/" },
+    { id: "dice", g: "game", th: "เกมทอยลูกเต๋า", short: "ทอยเต๋า", sub: "ลูกเต๋า 3 มิติ ทอยได้ทุกที่", icon: "dice", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ลูกเต๋า 3 มิติกลิ้ง เด้ง และชนกันเหมือนทอยบนโต๊ะจริง เปิดแอปแล้วทอยได้ทันที ไม่ต้องสมัคร ไม่ต้องต่อเน็ต",
+      store: AS + "6817426539", privacy: PV + "scaneasy-privacy/diceroll/" },
+    { id: "lunlek", g: "game", th: "LunLek: Number Spin Wheel", short: "ลุ้นเลข", sub: "วงล้อสุ่มเลขและเกมทายเลข", icon: "lunlek", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "สามเกมตัวเลขในแอปเดียว วงล้อสุ่มเลขที่ยุติธรรม เลขลับล็อกด้วยรหัส และเกมทายเลขสำหรับปาร์ตี้",
+      store: AS + "6818955466", privacy: PV + "scaneasy-privacy/lunlek/" },
+    { id: "type", g: "tool", th: "พิมพ์ง่าย", short: "พิมพ์ง่าย", sub: "พิมพ์เอกสารภาษาไทย", icon: "type", status: "soon",
+      desc: "พิมพ์เอกสารภาษาไทยที่ง่ายกว่า Word แต่ทำงานเอกสารทั่วไปได้ครบ ใช้ได้ทั้ง iPhone, iPad และ Mac" },
+    { id: "split", g: "life", dock: 1, th: "HarnKan: Split Bill PromptPay", short: "หารกัน", sub: "หารบิล แล้วเก็บเงินด้วยพร้อมเพย์", icon: "split", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "จ่ายทั้งโต๊ะไปแล้ว? หารกันคิดส่วนของแต่ละคนละเอียดถึงสตางค์ แล้วสร้าง QR พร้อมเพย์ที่ใส่ยอดของเพื่อนแต่ละคนไว้ให้ เพื่อนสแกนจ่ายได้ทันที",
+      store: AS + "6822262994", privacy: PV + "scaneasy-privacy/harnkan/" },
+    { id: "slipjot", g: "life", th: "SlipJot: Thai Slip Expenses", short: "SlipJot", sub: "จดรายจ่ายจากสลิปโอนเงิน", icon: "slipjot", status: "live", price: "ฟรี", platforms: "iPhone · iPad",
+      desc: "ทุกครั้งที่โอนเงิน แอปธนาคารจะเซฟสลิปไว้ในรูปภาพ SlipJot อ่านสลิปเหล่านั้นแล้วเตรียมรายการไว้ให้ คุณแค่ตรวจแล้วกดยืนยัน ไม่ต้องพิมพ์ยอดเองทีละรายการ",
+      store: AS + "6821524973", privacy: PV + "scaneasy-privacy/slipjot/" }
+  ];
+
+  function el(html) { var d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstChild; }
+  function icon(a, extra) {
+    return '<div class="icon real"' + (extra || '') + '><img src="icons/' + a.icon + '.png" alt="" width="128" height="128" loading="lazy" decoding="async"></div>';
+  }
+
+  var dock = document.getElementById("dock");
+  var dockApps = apps.filter(function (a) { return a.dock; });
+  dockApps.forEach(function (a) {
+    dock.appendChild(el('<a href="apps/' + SLUG[a.id] + '/">' + icon(a, ' aria-hidden="true"') + '<span>' + a.short + '</span></a>'));
+  });
+
+  var POINTS = {
+    scan: ["ตัดขอบ ปรับภาพตรง และสแกนหลายหน้าต่อเนื่อง", "ฟิลเตอร์ถ่ายเอกสารขาวดำ หรือสำเนาสี", "บันทึกเป็น PDF หรือ JPG", "ฟรีทุกฟีเจอร์"],
+    money: ["เปิดมาเจอแป้นตัวเลข บันทึกได้ในไม่กี่วินาที", "ไม่ต้องสมัคร ไม่ต้องล็อกอิน", "สำรองข้อมูลเข้า iCloud Drive ของคุณเอง", "จ่ายครั้งเดียว ไม่มีรายเดือน"],
+    stamp: ["ประทับวันเวลา จังหวัด อำเภอ และรหัสไปรษณีย์", "ข้อมูลอยู่ในภาพจริง ลบออกไม่ได้", "ฟรีทุกฟีเจอร์ ไม่มีโฆษณา"],
+    focus: ["คว่ำจอเพื่อเริ่ม ไม่มีปุ่มให้กด", "หยิบมือถือขึ้นมาเมื่อไร โดนแซวทันที", "ไม่ต้องตั้งค่าอะไรเลย"],
+    remote: ["ควบคุม Mac ได้ทั้งเครื่อง", "จำอุปกรณ์ที่ไว้ใจ ไม่ต้องยืนยันซ้ำ", "สลับคุม Mac หลายเครื่องได้"],
+    phonics: ["สระแต่ละเสียงมีสีประจำตัว", "เนื้อหาระดับ ป.2 และ ป.6", "ด่านไล่ความยากทีละขั้น"],
+    nuhat: ["พยัญชนะไทย 44 ตัว, A–Z และตัวเลข", "ฝึกเขียนชื่อตัวเอง", "มีเสียงอ่านทุกตัว และเก็บดาวเป็นรางวัล", "แบ่งระดับตามวัย 3–6 ขวบ"],
+    yamae: ["ตั้งเตือนได้หลายมื้อต่อวัน", "เลือกทุกวัน วันเว้นวัน หรือบางวันในสัปดาห์", "เตือนซ้ำอัตโนมัติถ้าเลยเวลา 30 นาที"],
+    jamthoe: ["แยก 6 หมวด ของกิน นิสัย ไซซ์ วันสำคัญ และอื่นๆ", "เตือนก่อนถึงวันสำคัญ", "เก็บไว้ในเครื่อง เป็นความลับ"],
+    songkon: ["นับวันที่คบกันและวันครบรอบ", "ปุ่มส่งคิดถึง แฟนได้แจ้งเตือนทันที", "จดหมายลับ เปิดอ่านได้ตามวันที่กำหนด"],
+    yingkhong: ["วาดลูกยิงด้วยนิ้ว โค้ง เลียด หรือส่าย", "ฟิสิกส์ลูกบอลสมจริง", "แข่งเต็มนัด เสมอดวลจุดโทษ"],
+    croc: ["ฟัน 12 ซี่ สุ่มซี่กับดักใหม่ทุกรอบ", "จระเข้ขยับปากหลอกเป็นระยะ", "โดนงับแล้วจอสั่น มีเสียง และระบบสั่น"],
+    spy: ["ใช้มือถือเครื่องเดียว ส่งเวียนกันดูคำ", "กดค้างเพื่อแอบดู ปล่อยนิ้วคำก็ซ่อน", "คำทั้งหมดเป็นภาษาไทย"],
+    dice: ["ทอยได้ 1 ถึง 6 ลูก", "กดปุ่ม แตะโต๊ะ หรือเขย่ามือถือเพื่อทอย", "บอกแต้มรวมและแต้มแต่ละลูกทันที"],
+    lunlek: ["วงล้อสุ่มเลข ทุกเลขมีโอกาสเท่ากัน", "โหมดไม่ซ้ำ สำหรับจับรางวัลหลายรางวัล", "เลขลับล็อกด้วยรหัส PIN"],
+    type: ["พิมพ์เอกสารภาษาไทยได้เต็มที่", "ง่ายกว่า Word แต่ครบงานทั่วไป", "ใช้ได้ทั้ง iPhone, iPad และ Mac"],
+    split: ["หารเท่ากัน หรือหารตามรายการที่แต่ละคนสั่ง", "สแกนใบเสร็จ อ่านชื่อเมนูและราคาภาษาไทยได้", "คิดเซอร์วิสชาร์จ 10% และ VAT 7% ให้", "QR พร้อมเพย์ใส่ยอดของแต่ละคน"],
+    slipjot: ["อ่านสลิปจากแอปธนาคารในอัลบั้มรูป", "ดึงยอด ค่าธรรมเนียม วันเวลา และผู้รับเงิน", "ไม่บันทึกสลิปซ้ำ และไม่นับโอนเข้าบัญชีตัวเองเป็นรายจ่าย", "เดาหมวดหมู่ และจำร้านที่เคยจ่าย"]
+  };
+  var check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>';
+
+  var grid = document.getElementById("grid");
+  GROUPS.forEach(function (g) {
+    var list = apps.filter(function (a) { return a.g === g.id; });
+    if (!list.length) return;
+    var sec = el('<div class="folder"><div class="folder-name">' + g.name + ' <span>' + list.length + '</span></div><div class="folder-apps"></div></div>');
+    var box = sec.querySelector(".folder-apps");
+    list.forEach(function (a) {
+      var tag = a.status === "soon" ? '<span class="tag soon">เร็วๆ นี้</span>'
+        : '<span class="tag' + (a.price !== "ฟรี" ? ' price' : '') + '">' + a.price + '</span>';
+      var b = el('<button type="button" class="app' + (a.status === "soon" ? ' is-soon' : '') + '" id="app-' + a.id + '" aria-haspopup="dialog">' +
+        icon(a, ' aria-hidden="true"') + '<span class="name">' + a.short + '</span>' + tag + '</button>');
+      b.addEventListener("click", function () { openApp(a, b); });
+      box.appendChild(b);
+    });
+    grid.appendChild(sec);
+  });
+
+  var sheet = document.getElementById("sheet"), lastOpener = null;
+  function openApp(a, opener) {
+    lastOpener = opener || null;
+    document.getElementById("sh-icon").innerHTML = icon(a);
+    document.getElementById("sh-title").textContent = a.th;
+    document.getElementById("sh-sub").textContent = a.sub;
+    var meta = a.status === "soon" ? '<span class="chip soon">เร็วๆ นี้</span>'
+      : (a.status === "web" ? '<span class="chip live">ดาวน์โหลดจากเว็บ</span>' : '<span class="chip live">บน App Store</span>') +
+        '<span class="chip price">' + a.price + '</span><span class="chip">' + a.platforms + '</span>';
+    document.getElementById("sh-meta").innerHTML = meta;
+    document.getElementById("sh-desc").textContent = a.desc;
+    document.getElementById("sh-points").innerHTML = (POINTS[a.id] || []).map(function (t) { return '<li>' + check + '<span>' + t + '</span></li>'; }).join("");
+    var shots = SHOTS[a.id] || [];
+    document.getElementById("sh-shots").innerHTML = shots.map(function (s, n) {
+      return '<img src="' + s + '" alt="ภาพหน้าจอ ' + a.short + ' ' + (n + 1) + '" width="420" height="912" loading="lazy" decoding="async">';
+    }).join("");
+    document.getElementById("sh-shots").hidden = !shots.length;
+    var foot = "";
+    if (a.status === "soon") foot = '<span class="plink">กำลังพัฒนา จะเปิดให้ดาวน์โหลดเร็วๆ นี้</span>';
+    else {
+      foot = (a.store ? '<a class="store" href="' + a.store + '" target="_blank" rel="noopener">' + appleSvg + 'ดาวน์โหลดใน App Store</a>'
+                      : '<a class="store" href="' + a.web + '" target="_blank" rel="noopener">ไปที่หน้า ' + a.th + ' →</a>') +
+             '<a class="plink strong" href="apps/' + SLUG[a.id] + '/">ดูหน้าแอป · ช่วยเหลือ →</a>' +
+             (a.store ? '<a class="plink" href="' + a.store + '?action=write-review" target="_blank" rel="noopener">★ ให้ดาวแอปนี้</a>' : '') +
+             '<a class="plink" href="' + a.privacy + '" target="_blank" rel="noopener">นโยบายความเป็นส่วนตัว</a>';
+    }
+    document.getElementById("sh-foot").innerHTML = foot;
+    sheet.hidden = false;
+    document.body.style.overflow = "hidden";
+    document.getElementById("sh-close").focus();
+  }
+  function closeApp() {
+    if (sheet.hidden) return;
+    sheet.hidden = true;
+    document.body.style.overflow = "";
+    if (lastOpener) lastOpener.focus({ preventScroll: true });
+  }
+  document.getElementById("sh-close").addEventListener("click", closeApp);
+  sheet.addEventListener("click", function (e) { if (e.target === sheet) closeApp(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeApp(); });
+
+  dock.querySelectorAll("a").forEach(function (l, i) {
+    l.addEventListener("click", function (e) { e.preventDefault(); openApp(dockApps[i], l); });
+  });
+
+  document.getElementById("live-count").textContent = apps.filter(function (a) { return a.status === "live"; }).length;
+
+  var plist = document.getElementById("privacy-list");
+  apps.filter(function (a) { return a.privacy; }).forEach(function (a) {
+    plist.appendChild(el('<li><a href="' + a.privacy + '" target="_blank" rel="noopener">' + a.short + '</a></li>'));
+  });
+
+  var copyBtn = document.getElementById("copy-mail");
+  copyBtn.addEventListener("click", function () {
+    var t = document.getElementById("mail").textContent;
+    function done() { copyBtn.textContent = "คัดลอกแล้ว"; setTimeout(function () { copyBtn.textContent = "คัดลอก"; }, 1600); }
+    function sel() { var r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    try { navigator.clipboard.writeText(t).then(done, sel); } catch (e) { sel(); }
+  });
+
+  // nav goes solid once you scroll past the top
+  var nav = document.getElementById("nav");
+  function onScroll() { nav.classList.toggle("solid", window.scrollY > 24); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // rain
+  var cv = document.getElementById("rain"), ctx = cv.getContext("2d"), drops = [], W = 0, H = 0;
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function size() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(W * H / 9000);
+    drops = [];
+    for (var i = 0; i < n; i++) drops.push({ x: Math.random() * W, y: Math.random() * H, l: 8 + Math.random() * 18, v: 4 + Math.random() * 7, a: .08 + Math.random() * .22 });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H); ctx.lineCap = "round"; ctx.lineWidth = 1;
+    for (var i = 0; i < drops.length; i++) {
+      var d = drops[i];
+      ctx.strokeStyle = "rgba(170,205,255," + d.a + ")";
+      ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(d.x - d.l * .18, d.y + d.l); ctx.stroke();
+      if (!still) { d.y += d.v; d.x -= d.v * .18; if (d.y > H) { d.y = -d.l; d.x = Math.random() * (W + 60); } }
+    }
+    // splashes where the visitor taps
+    ctx.lineWidth = 1.5;
+    for (var j = ripples.length - 1; j >= 0; j--) {
+      var r = ripples[j]; r.t += 1;
+      var k = r.t / 70;
+      if (k >= 1) { ripples.splice(j, 1); continue; }
+      for (var ring = 0; ring < 3; ring++) {
+        var kk = k - ring * .16; if (kk <= 0) continue;
+        ctx.strokeStyle = "rgba(170,215,255," + (0.55 * (1 - kk)).toFixed(3) + ")";
+        ctx.beginPath(); ctx.ellipse(r.x, r.y, 80 * kk, 24 * kk, 0, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
+    if (!still) requestAnimationFrame(draw);
+  }
+  var ripples = [];
+  size(); draw();
+  window.addEventListener("resize", function () { size(); if (still) draw(); });
+
+  var band = document.querySelector(".top-band");
+  var fine = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (!still) band.addEventListener("pointerdown", function (e) {
+    if (e.target.closest("a, button")) return;
+    var rc = cv.getBoundingClientRect();
+    ripples.push({ x: e.clientX - rc.left, y: e.clientY - rc.top, t: 0 });
+  });
+
+  // phones tilt toward the pointer
+  var phones = document.querySelector(".phones");
+  if (fine && !still) {
+    band.addEventListener("pointermove", function (e) {
+      var rc = band.getBoundingClientRect();
+      var nx = (e.clientX - rc.left) / rc.width - .5, ny = (e.clientY - rc.top) / rc.height - .5;
+      phones.style.setProperty("--ry", (nx * 16).toFixed(2));
+      phones.style.setProperty("--rx", (-ny * 10).toFixed(2));
+    });
+    band.addEventListener("pointerleave", function () { phones.style.setProperty("--ry", 0); phones.style.setProperty("--rx", 0); });
+  }
+
+  // rotating last word of the headline
+  var words = ["ง่ายขึ้น", "เร็วขึ้น", "สนุกขึ้น", "ลงตัวขึ้น"], wi = 0, sw = document.getElementById("swap");
+  if (!still) setInterval(function () {
+    sw.classList.add("out");
+    setTimeout(function () { wi = (wi + 1) % words.length; sw.textContent = words[wi]; sw.classList.remove("out"); }, 350);
+  }, 2800);
+
+  // live clock on the timestamp camera screen (Buddhist year)
+  var st = document.getElementById("stamp-time");
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function tick() { var d = new Date(); st.textContent = pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + (d.getFullYear() + 543) + " " + pad2(d.getHours()) + ":" + pad2(d.getMinutes()) + ":" + pad2(d.getSeconds()); }
+  tick(); setInterval(tick, 1000);
+
+  // dock magnification
+  var dockEl = document.getElementById("dock"), dIcons = dockEl.querySelectorAll(".icon");
+  if (fine && !still) {
+    dockEl.addEventListener("pointermove", function (e) {
+      dIcons.forEach(function (ic) {
+        var r = ic.getBoundingClientRect(), dist = Math.abs(e.clientX - (r.left + r.width / 2));
+        var s = 1 + .5 * Math.max(0, 1 - dist / 120);
+        ic.style.transform = "translateY(" + (-(s - 1) * 24).toFixed(1) + "px) scale(" + s.toFixed(3) + ")";
+      });
+    });
+    dockEl.addEventListener("pointerleave", function () { dIcons.forEach(function (ic) { ic.style.transform = ""; }); });
+  }
+
+  // card tilt + spotlight
+  document.querySelectorAll(".card").forEach(function (c) {
+    if (!fine) return;
+    c.addEventListener("pointermove", function (e) {
+      var rc = c.getBoundingClientRect(), x = e.clientX - rc.left, y = e.clientY - rc.top;
+      c.style.setProperty("--mx", x + "px"); c.style.setProperty("--my", y + "px");
+      if (!still) c.style.transform = "perspective(900px) rotateX(" + ((.5 - y / rc.height) * 6).toFixed(2) + "deg) rotateY(" + ((x / rc.width - .5) * 6).toFixed(2) + "deg) translateY(-3px)";
+    });
+    c.addEventListener("pointerleave", function () { c.style.transform = ""; });
+  });
+
+  // phonics words speak when tapped
+  document.querySelectorAll(".word[data-say]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      b.classList.remove("say"); void b.offsetWidth; b.classList.add("say");
+      try {
+        if (window.speechSynthesis) {
+          speechSynthesis.cancel();
+          var u = new SpeechSynthesisUtterance(b.getAttribute("data-say"));
+          u.lang = "en-US"; u.rate = .8; speechSynthesis.speak(u);
+        }
+      } catch (err) {}
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

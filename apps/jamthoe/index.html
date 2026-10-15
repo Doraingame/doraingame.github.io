@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>จำเธอ - จำทุกเรื่องของแฟน | Dorain Lab</title>
+<meta name="description" content="จดทุกเรื่องของแฟน ตั้งแต่เมนูโปรด ไซซ์รองเท้า ไปจนถึงวันครบรอบ แล้วให้แอปช่วยจำและเตือนแทนคุณ">
+<link rel="canonical" href="https://doraingame.github.io/apps/jamthoe/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dorain Lab">
+<meta property="og:title" content="จำเธอ - จำทุกเรื่องของแฟน | Dorain Lab">
+<meta property="og:description" content="จดทุกเรื่องของแฟน ตั้งแต่เมนูโปรด ไซซ์รองเท้า ไปจนถึงวันครบรอบ แล้วให้แอปช่วยจำและเตือนแทนคุณ">
+<meta property="og:url" content="https://doraingame.github.io/apps/jamthoe/">
+<meta name="theme-color" content="#06111f">
+<meta name="apple-itunes-app" content="app-id=6818954443">
+<meta property="og:image" content="https://doraingame.github.io/icons/jamthoe.png">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap">
+<style>
+
+/* Layout: sticky frosted nav over a night-rain hero with three phones, an iOS-style dock bridging into a bright page, two app spotlights, the catalogue, then support */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f9;
+  --ink: #0d1a33;
+  --muted: #5b6782;
+  --line: #e1e6ef;
+  --accent: #2b6ff2;
+  --chip: #eef2fa;
+  --live: #0b8a60;
+  --live-bg: #e1f4ec;
+  --soon: #5b6782;
+  --soon-bg: #eceff5;
+  --price: #7a4f00;
+  --price-bg: #ffefc7;
+  --shadow: 0 1px 2px rgba(13, 26, 51, .05), 0 12px 32px -14px rgba(13, 26, 51, .22);
+  --shadow-lg: 0 2px 4px rgba(13, 26, 51, .05), 0 30px 60px -24px rgba(13, 26, 51, .35);
+
+  --night: #06111f;
+  --night-2: #0b2142;
+  --night-ink: #f2f6ff;
+  --night-muted: #a7b6d3;
+  --glow-a: rgba(64, 214, 200, .28);
+  --glow-b: rgba(43, 111, 242, .38);
+
+  --v1: #e5484d; --v2: #2b6ff2; --v3: #0f9d6e; --v4: #d98a00;
+
+  --f-display: "Chakra Petch", "Noto Sans Thai", system-ui, sans-serif;
+  --f-body: "Chakra Petch", "Noto Sans Thai", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #08101e; --surface: #101a2c; --surface-2: #0d1627; --ink: #e8eefb; --muted: #9aa8c4; --line: #1d2a42;
+    --accent: #6ea4ff; --chip: #16223a; --live: #44d6a0; --live-bg: #10332a; --soon: #a9b5cc; --soon-bg: #19243a;
+    --price: #ffd27a; --price-bg: #3a2b0b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.7);
+    --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 30px 60px -24px rgba(0,0,0,.8);
+    --v1: #ff6b70; --v2: #6ea4ff; --v3: #44d6a0; --v4: #ffbf47;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #08101e; --surface: #101a2c; --surface-2: #0d1627; --ink: #e8eefb; --muted: #9aa8c4; --line: #1d2a42;
+  --accent: #6ea4ff; --chip: #16223a; --live: #44d6a0; --live-bg: #10332a; --soon: #a9b5cc; --soon-bg: #19243a;
+  --price: #ffd27a; --price-bg: #3a2b0b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.7);
+  --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 30px 60px -24px rgba(0,0,0,.8);
+  --v1: #ff6b70; --v2: #6ea4ff; --v3: #44d6a0; --v4: #ffbf47;
+  color-scheme: dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%}a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:60rem;margin:0 auto;padding-inline:20px}
+.top{background:var(--night);color:var(--night-ink);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--night-ink);text-decoration:none;font-family:var(--f-display);font-weight:600;font-size:1.1rem}
+.brand svg{width:30px;height:30px}
+.top nav a{color:var(--night-muted);text-decoration:none;font-size:.95rem}
+.hero{padding-block:40px 8px}
+.app-head{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.app-head img.ic{width:112px;height:112px;border-radius:25px;box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 14px 26px -12px rgba(13,26,51,.45);flex:none}
+.app-head > div{min-width:0;flex:1 1 260px}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(1.6rem,4.5vw,2.3rem);line-height:1.2;margin:0;text-wrap:balance}
+.sub{color:var(--muted);font-size:1.05rem}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:.8rem;padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.chip.price{background:var(--price-bg);color:var(--price);font-weight:600}
+.chip.live{background:var(--live-bg);color:var(--live);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:14px;font-weight:600;text-decoration:none}
+.btn svg{width:18px;height:18px}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.ghost{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+section{padding-block:28px}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.35rem;margin:0 0 12px}
+.desc{max-width:62ch;color:var(--muted);font-size:1.05rem;margin:0}
+.points{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px;max-width:62ch}
+.points li{display:flex;gap:10px;align-items:flex-start}
+.points svg{width:20px;height:20px;flex:none;margin-top:4px;color:var(--live)}
+.shots{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.shots img{flex:none;width:210px;height:auto;aspect-ratio:420/912;border-radius:22px;border:1px solid var(--line);scroll-snap-align:start;background:var(--chip)}
+.card{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:24px}
+.support{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.support .card p{color:var(--muted);margin:0 0 12px}
+.mail{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mail code{font-family:ui-monospace,Menlo,monospace;background:var(--bg);border:1px solid var(--line);padding:8px 12px;border-radius:10px;overflow-wrap:anywhere;user-select:all}
+.links{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:18px 8px}
+.more a{display:grid;justify-items:center;gap:6px;text-decoration:none;color:var(--ink);font-size:.85rem;text-align:center}
+.more img{width:64px;height:64px;border-radius:15px;box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 8px 16px -8px rgba(13,26,51,.4)}
+footer{border-top:1px solid var(--line);margin-top:28px}
+footer .wrap{padding-block:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.support{grid-template-columns:1fr}.shots img{width:170px}.app-head img.ic{width:88px;height:88px;border-radius:20px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../../"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fe7d9"/><stop offset="1" stop-color="#3d7cff"/></linearGradient></defs><rect width="64" height="64" rx="14.4" fill="url(#dg)"/><path d="M22 11l-5 13M36 9l-7 18M48 13l-4 10M27 32l-4 10" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity=".9"/><path d="M43 31c0 0-7.5 9-7.5 13.5a7.5 7.5 0 0 0 15 0C50.5 40 43 31 43 31z" fill="#fff"/></svg>Dorain Lab</a>
+  <nav><a href="../../#apps">แอปทั้งหมด</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="app-head">
+      <img class="ic" src="../../icons/jamthoe.png" alt="ไอคอน จำเธอ" width="256" height="256">
+      <div>
+        <h1>จำเธอ - จำทุกเรื่องของแฟน</h1>
+        <div class="sub">สมุดลับของผู้ชายที่ใส่ใจ</div>
+        <div class="chips"><span class="chip live">บน App Store</span><span class="chip price">ฟรี</span><span class="chip">iPhone · iPad</span></div>
+      </div>
+    </div>
+    <div class="cta"><a class="btn primary" href="https://apps.apple.com/th/app/id6818954443" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2-1.1 2.8-2.3.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>ดาวน์โหลดใน App Store</a><a class="btn ghost" href="https://apps.apple.com/th/app/id6818954443?action=write-review" target="_blank" rel="noopener">★ ให้ดาวแอปนี้</a></div>
+  </div>
+  <section>
+    <p class="desc">จดทุกเรื่องของแฟน ตั้งแต่เมนูโปรด ไซซ์รองเท้า ไปจนถึงวันครบรอบ แล้วให้แอปช่วยจำและเตือนแทนคุณ</p>
+    <ul class="points"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>แยก 6 หมวด ของกิน นิสัย ไซซ์ วันสำคัญ และอื่นๆ</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>เตือนก่อนถึงวันสำคัญ</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>เก็บไว้ในเครื่อง เป็นความลับ</span></li></ul>
+  </section>
+  <section aria-label="ภาพหน้าจอ">
+    <h2>ภาพหน้าจอ</h2>
+    <div class="shots"><img src="../../shots/jamthoe-1.jpg" alt="ภาพหน้าจอ จำเธอ 1" width="420" height="912" loading="lazy" decoding="async"><img src="../../shots/jamthoe-2.jpg" alt="ภาพหน้าจอ จำเธอ 2" width="420" height="912" loading="lazy" decoding="async"><img src="../../shots/jamthoe-3.jpg" alt="ภาพหน้าจอ จำเธอ 3" width="420" height="912" loading="lazy" decoding="async"><img src="../../shots/jamthoe-4.jpg" alt="ภาพหน้าจอ จำเธอ 4" width="420" height="912" loading="lazy" decoding="async"></div>
+  </section>
+  <section id="support">
+    <h2>ช่วยเหลือ</h2>
+    <div class="support">
+      <div class="card">
+        <p>เจอปัญหา หรืออยากได้ฟีเจอร์ใน จำเธอ ส่งอีเมลมาได้เลย บอกรุ่น iPhone หรือ iPad และเวอร์ชัน iOS ที่ใช้ด้วย จะช่วยให้แก้ได้เร็วขึ้น</p>
+        <div class="mail"><code>doraingame@gmail.com</code><a class="btn ghost" href="mailto:doraingame@gmail.com?subject=ช่วยเหลือ: จำเธอ - จำทุกเรื่องของแฟน">ส่งอีเมล</a></div>
+      </div>
+      <div class="card">
+        <ul class="links">
+          <li><a href="https://doraingame.github.io/scaneasy-privacy/jamthoe/">นโยบายความเป็นส่วนตัวของ จำเธอ</a></li>
+          <li><a href="https://apps.apple.com/th/app/id6818954443" target="_blank" rel="noopener">หน้า จำเธอ บน App Store</a></li>
+          <li><a href="../../">แอปทั้งหมดจาก Dorain Lab</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>แอปอื่นที่น่าจะชอบ</h2>
+    <div class="more"><a href="../songkon/"><img src="../../icons/songkon.png" alt="" width="64" height="64" loading="lazy">สองคน</a><a href="../scanngai/"><img src="../../icons/scan.png" alt="" width="64" height="64" loading="lazy">สแกนง่าย</a><a href="../simple-expenses/"><img src="../../icons/money.png" alt="" width="64" height="64" loading="lazy">รายรับรายจ่าย</a><a href="../timestamp/"><img src="../../icons/stamp.png" alt="" width="64" height="64" loading="lazy">ตราเวลา</a><a href="../focusflip/"><img src="../../icons/focus.png" alt="" width="64" height="64" loading="lazy">FocusFlip</a><a href="../english-phonics/"><img src="../../icons/phonics.png" alt="" width="64" height="64" loading="lazy">Phonics</a></div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© 2026 Dorain Lab · ทำในประเทศไทย</span><span>doraingame@gmail.com</span></div></footer>
+</body>
+</html>
