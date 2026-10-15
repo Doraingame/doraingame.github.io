@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>นโยบายความเป็นส่วนตัว ช้าก่อน | Dorain Lab</title>
+<meta name="description" content="นโยบายความเป็นส่วนตัวของแอปช้าก่อน">
+<link rel="canonical" href="https://doraingame.github.io/apps/chakon/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dorain Lab">
+<meta property="og:title" content="นโยบายความเป็นส่วนตัว ช้าก่อน | Dorain Lab">
+<meta property="og:description" content="นโยบายความเป็นส่วนตัวของแอปช้าก่อน">
+<meta property="og:url" content="https://doraingame.github.io/apps/chakon/privacy.html">
+<meta name="theme-color" content="#06111f">
+<meta property="og:image" content="https://doraingame.github.io/icons/chakon.png">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap">
+<style>
+
+/* Layout: sticky frosted nav over a night-rain hero with three phones, an iOS-style dock bridging into a bright page, two app spotlights, the catalogue, then support */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f9;
+  --ink: #0d1a33;
+  --muted: #5b6782;
+  --line: #e1e6ef;
+  --accent: #2b6ff2;
+  --chip: #eef2fa;
+  --live: #0b8a60;
+  --live-bg: #e1f4ec;
+  --soon: #5b6782;
+  --soon-bg: #eceff5;
+  --price: #7a4f00;
+  --price-bg: #ffefc7;
+  --shadow: 0 1px 2px rgba(13, 26, 51, .05), 0 12px 32px -14px rgba(13, 26, 51, .22);
+  --shadow-lg: 0 2px 4px rgba(13, 26, 51, .05), 0 30px 60px -24px rgba(13, 26, 51, .35);
+
+  --night: #06111f;
+  --night-2: #0b2142;
+  --night-ink: #f2f6ff;
+  --night-muted: #a7b6d3;
+  --glow-a: rgba(64, 214, 200, .28);
+  --glow-b: rgba(43, 111, 242, .38);
+
+  --v1: #e5484d; --v2: #2b6ff2; --v3: #0f9d6e; --v4: #d98a00;
+
+  --f-display: "Chakra Petch", "Noto Sans Thai", system-ui, sans-serif;
+  --f-body: "Chakra Petch", "Noto Sans Thai", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #08101e; --surface: #101a2c; --surface-2: #0d1627; --ink: #e8eefb; --muted: #9aa8c4; --line: #1d2a42;
+    --accent: #6ea4ff; --chip: #16223a; --live: #44d6a0; --live-bg: #10332a; --soon: #a9b5cc; --soon-bg: #19243a;
+    --price: #ffd27a; --price-bg: #3a2b0b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.7);
+    --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 30px 60px -24px rgba(0,0,0,.8);
+    --v1: #ff6b70; --v2: #6ea4ff; --v3: #44d6a0; --v4: #ffbf47;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #08101e; --surface: #101a2c; --surface-2: #0d1627; --ink: #e8eefb; --muted: #9aa8c4; --line: #1d2a42;
+  --accent: #6ea4ff; --chip: #16223a; --live: #44d6a0; --live-bg: #10332a; --soon: #a9b5cc; --soon-bg: #19243a;
+  --price: #ffd27a; --price-bg: #3a2b0b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 34px -16px rgba(0,0,0,.7);
+  --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 30px 60px -24px rgba(0,0,0,.8);
+  --v1: #ff6b70; --v2: #6ea4ff; --v3: #44d6a0; --v4: #ffbf47;
+  color-scheme: dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%}a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:60rem;margin:0 auto;padding-inline:20px}
+.top{background:var(--night);color:var(--night-ink);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--night-ink);text-decoration:none;font-family:var(--f-display);font-weight:600;font-size:1.1rem}
+.brand svg{width:30px;height:30px}
+.top nav a{color:var(--night-muted);text-decoration:none;font-size:.95rem}
+.hero{padding-block:40px 8px}
+.app-head{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.app-head img.ic{width:112px;height:112px;border-radius:25px;box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 14px 26px -12px rgba(13,26,51,.45);flex:none}
+.app-head > div{min-width:0;flex:1 1 260px}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(1.6rem,4.5vw,2.3rem);line-height:1.2;margin:0;text-wrap:balance}
+.sub{color:var(--muted);font-size:1.05rem}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:.8rem;padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.chip.price{background:var(--price-bg);color:var(--price);font-weight:600}
+.chip.live{background:var(--live-bg);color:var(--live);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:14px;font-weight:600;text-decoration:none}
+.btn svg{width:18px;height:18px}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.ghost{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+section{padding-block:28px}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.35rem;margin:0 0 12px}
+.desc{max-width:62ch;color:var(--muted);font-size:1.05rem;margin:0}
+.points{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px;max-width:62ch}
+.points li{display:flex;gap:10px;align-items:flex-start}
+.points svg{width:20px;height:20px;flex:none;margin-top:4px;color:var(--live)}
+.shots{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.shots img{flex:none;width:210px;height:auto;aspect-ratio:420/912;border-radius:22px;border:1px solid var(--line);scroll-snap-align:start;background:var(--chip)}
+.card{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:24px}
+.support{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.support .card p{color:var(--muted);margin:0 0 12px}
+.mail{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mail code{font-family:ui-monospace,Menlo,monospace;background:var(--bg);border:1px solid var(--line);padding:8px 12px;border-radius:10px;overflow-wrap:anywhere;user-select:all}
+.links{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:18px 8px}
+.more a{display:grid;justify-items:center;gap:6px;text-decoration:none;color:var(--ink);font-size:.85rem;text-align:center}
+.more img{width:64px;height:64px;border-radius:15px;box-shadow:0 0 0 .5px rgba(0,0,0,.08),0 8px 16px -8px rgba(13,26,51,.4)}
+footer{border-top:1px solid var(--line);margin-top:28px}
+footer .wrap{padding-block:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){.support{grid-template-columns:1fr}.shots img{width:170px}.app-head img.ic{width:88px;height:88px;border-radius:20px}}
+</style>
+.policy h2{margin-top:28px}.policy p,.policy li{color:var(--muted);max-width:66ch}
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../../"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fe7d9"/><stop offset="1" stop-color="#3d7cff"/></linearGradient></defs><rect width="64" height="64" rx="14.4" fill="url(#dg)"/><path d="M22 11l-5 13M36 9l-7 18M48 13l-4 10M27 32l-4 10" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity=".9"/><path d="M43 31c0 0-7.5 9-7.5 13.5a7.5 7.5 0 0 0 15 0C50.5 40 43 31 43 31z" fill="#fff"/></svg>Dorain Lab</a>
+  <nav><a href="../../#apps">แอปทั้งหมด</a></nav>
+</div></header>
+<main class="wrap policy">
+  <div class="hero"><h1>นโยบายความเป็นส่วนตัว: ช้าก่อน</h1><div class="sub">มีผลตั้งแต่ 15 ตุลาคม 2569</div></div>
+  <section>
+    <p>ช้าก่อนออกแบบให้เก็บข้อมูลน้อยที่สุด ไม่มีบัญชีผู้ใช้ ไม่มีโฆษณา ไม่ติดตามผู้ใช้ข้ามแอป และผู้พัฒนาไม่มีเซิร์ฟเวอร์ของตัวเอง</p>
+    <h2>แอปและเว็บที่คุณล็อก</h2>
+    <p>แอปใช้ Screen Time ของ Apple (Family Controls) ในการล็อก ระบบของ Apple ส่งให้แอปเป็นรหัสอ้างอิงแทนชื่อแอปและเว็บจริง ข้อมูลนี้ รวมถึงการตั้งค่า ประวัติการปลดล็อก และเหตุผลที่คุณเลือก ถูกเก็บไว้ในเครื่องของคุณเท่านั้น ไม่ถูกส่งออกไปที่ใด</p>
+    <h2>ระบบผู้ดูแล (ใช้หรือไม่ใช้ก็ได้)</h2>
+    <p>ถ้าคุณเปิดใช้ผู้ดูแล แอปจะเก็บข้อมูลต่อไปนี้ใน iCloud (CloudKit) ของ Apple เพื่อส่งถึงเครื่องของผู้ดูแล</p>
+    <ul>
+      <li>ชื่อที่คุณและผู้ดูแลพิมพ์เอง เช่น "แม่" หรือ "ลูกเอ"</li>
+      <li>คำขอล่าสุด: ประเภทคำขอ ระดับความเข้มของรายการที่ล็อก เหตุผลที่คุณเลือก และเวลา (ไม่มีชื่อแอปจริง ยอดเงิน หรือข้อมูลธนาคาร)</li>
+      <li>คำตอบล่าสุดของผู้ดูแล (อนุมัติหรือไม่อนุมัติ)</li>
+    </ul>
+    <p>ข้อมูลเหล่านี้ใช้เพื่อให้ระบบผู้ดูแลทำงานเท่านั้น ไม่ใช้เพื่อโฆษณาหรือวิเคราะห์ และไม่ขายหรือส่งต่อให้บุคคลอื่น แต่ละคู่มีรหัสอ้างอิงแบบสุ่ม ข้อมูลจะถูกเขียนทับทุกครั้งที่มีคำขอใหม่ และถูกลบเมื่อเลิกใช้ผู้ดูแลหรือเลิกดูแล</p>
+    <h2>การแจ้งเตือน</h2>
+    <p>แอปใช้การแจ้งเตือนเพื่อบอกเวลาล็อกกลับ และใช้การแจ้งเตือนผ่าน iCloud เพื่อบอกผู้ดูแลเมื่อมีคำขอใหม่</p>
+    <h2>เด็ก</h2>
+    <p>แอปไม่ได้ตั้งใจเก็บข้อมูลส่วนบุคคลของเด็ก</p>
+    <h2>การลบข้อมูล</h2>
+    <p>ลบแอปออกจากเครื่องเพื่อลบข้อมูลในเครื่องทั้งหมด หากต้องการให้ลบข้อมูลระบบผู้ดูแลใน iCloud ส่งอีเมลมาที่ doraingame@gmail.com</p>
+    <h2>ติดต่อ</h2>
+    <p>Dorain Lab · doraingame@gmail.com</p>
+  </section>
+</main>
+<footer><div class="wrap"><span>© 2026 Dorain Lab · ทำในประเทศไทย</span><span>doraingame@gmail.com</span></div></footer>
+</body>
+</html>
